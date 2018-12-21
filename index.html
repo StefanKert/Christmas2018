@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/lightrope.css">
     <link rel="stylesheet" href="css/sprinkles.css">
     <link rel="stylesheet" href="css/waiting.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body>
@@ -216,6 +217,7 @@
     <canvas></canvas>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="js/sprinkles.js"></script>
     <script src="js/snowflakes.js"></script>
     <script>
@@ -231,20 +233,6 @@
         if (new Date() < new Date(2018, 11, 24, 17, 00, 00)) {
             $('#christmas').hide();
             $('#waiting').show();
-            var countDownDate = new Date(2018, 11, 24, 17, 00, 00).getTime();
-            var x = setInterval(function () {
-                var now = new Date().getTime();
-                var distance = countDownDate - now;
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                $('#countdown').html("Noch " + days + " Tage " + hours + " Stunden " + minutes + " Minuten " + seconds + " Sekunden ")
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("demo").innerHTML = "EXPIRED";
-                }
-            }, 1000);
             maxSnowflakes = 500;
         }
         else {
@@ -276,6 +264,11 @@
                     maxSnowflakes = 10000;
                     innerColor = "34,139,43";
                     outerColor = "30,200,50";
+                    toastr.success('Das Christkind hat was f&uuml;r dich', 'Check mal deine Emails :)', { timeOut: 5000 });
+                    $.ajax({
+                        type: "POST",
+                        url: "https://chrissis-christmas2018.azurewebsites.net/api/SendEmail",
+                    });
                 }
                 else {
                     innerColor = "255,255,255";
