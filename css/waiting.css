@@ -2,11 +2,14 @@
 
 .waiting-container {
     background-color: transparent;
-    height: 800px;
     margin: 40px auto 50px auto;
-    margin-top: 200px;
     position: relative;
-    width: 900px;
+}
+
+@media only screen and (min-width: 768px) {
+    .waiting-container {
+        margin-top: 200px;
+    }
 }
 
 .artboard {
