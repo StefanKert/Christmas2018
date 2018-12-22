@@ -61,10 +61,11 @@
 .popup__text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  
   width: 60%;
   height: 100%;
-  padding: 4rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 .popup__text h1 {
   font-size: 2rem;
@@ -106,6 +107,14 @@
   text-decoration: none;
 }
 
+.popup__text__site {
+  flex: 1;
+  overflow: auto;
+}
+
+.popup__button {
+  padding-bottom: 10px;
+}
 
 #modalbutton {
     box-sizing: border-box; 
